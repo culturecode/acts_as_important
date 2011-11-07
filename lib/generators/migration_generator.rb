@@ -9,7 +9,7 @@ class ActsAsImportantMigrationGenerator < Rails::Generators::Base
             t.text       :note
           end
 
-          add_index :importance_indicators, [:record_id, :record_type], :unique => true    
+          add_index :importance_indicators, [:record_id, :record_type], :name => 'index_importance_indicators', :unique => true
         end
       end
     EOV
