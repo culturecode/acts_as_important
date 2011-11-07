@@ -1,0 +1,3 @@
+== ActsAsImportant
+
+Allows the you track what records are important to users and why.
