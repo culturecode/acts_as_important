@@ -24,11 +24,16 @@ module ActsAsImportant
   module ClassMethods
     # Find all the importance_indicators of the records by the user in a single SQL query and cache them in the records for use in the view.
     def cache_importance_for(records, user)
-      importance_indicators = ImportanceIndicator.where(:record_type => name, :record_id => records.collect(&:id), :user_id => user.id)
+      importance_indicators = []
+      ImportanceIndicator.where(:record_type => name, :record_id => records.collect(&:id), :user_id => user.id).each do |importance_indicator|
+        importance_indicators[importance_indicator.record_id] = importance_indicator
+      end
 
       for record in records
-        record.cached_importance = importance_indicators.detect {|importance_indicator| importance_indicator.record_id == record.id} || false
+        record.cached_importance = importance_indicators[record.id] || false
       end
+      
+      return importance_indicators      
     end
   end
   
