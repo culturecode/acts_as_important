@@ -65,7 +65,7 @@ module ActsAsImportant
     def importance_indicator_for(user)
       case cached_importance
       when nil
-        importance_indicators.find_by_user_id(user.id)
+        importance_indicators.loaded? ? importance_indicators.detect{|i| i.user_id == user.id} : importance_indicators.find_by_user_id(user.id)
       when false
         nil
       else
