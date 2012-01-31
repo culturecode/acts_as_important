@@ -16,7 +16,7 @@ module ActsAsImportant
     end
     
     # Call this method from the user model
-    def concered_with_importance
+    def concerned_with_importance
       has_many :importance_indicators
     end
   end
