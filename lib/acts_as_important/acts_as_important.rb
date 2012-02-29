@@ -2,6 +2,7 @@ module ActsAsImportant
   module ActMethod #:nodoc:
     def acts_as_important(options = {})
       has_many :importance_indicators, :as => :record, :dependent => :destroy
+      has_many :concerned_users, :through => :importance_indicators, :source => :user
 
       # Left joins importance indicators from a particular user
       scope :with_user_importance, lambda{|user| joins("LEFT OUTER JOIN importance_indicators ON importance_indicators.record_id = #{quoted_table_name}.id AND importance_indicators.record_type = '#{name}' AND importance_indicators.user_id = #{user.id}")}
