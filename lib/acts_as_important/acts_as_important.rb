@@ -3,7 +3,7 @@ module ActsAsImportant
     def acts_as_important(options = {})
       has_many :importance_indicators, :as => :record, :dependent => :destroy
       
-      has_many :active_importance_indicators, :as => :record, :dependent => :destroy, :conditions =>['active = ?', true]
+      has_many :active_importance_indicators, :class_name => 'ImportanceIndicator', :as => :record, :dependent => :destroy, :conditions =>['active = ?', true]
       has_many :concerned_users, :through => :active_importance_indicators, :source => :user
 
       # Left joins importance indicators from a particular user
