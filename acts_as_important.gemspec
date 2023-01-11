@@ -8,5 +8,5 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*"]
 
-  s.add_dependency "rails", ["> 4", "< 7"]
+  s.add_dependency "rails", ["> 4", "< 8"]
 end
