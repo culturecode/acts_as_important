@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'acts_as_important'
-  s.version = '0.3.1'
+  s.version = '0.4.0'
   s.email = 'contact@culturecode.ca'
   s.homepage = 'http://github.com/culturecode/acts_as_important'
   s.summary = 'Allows the you track what records are important to users and why.'
